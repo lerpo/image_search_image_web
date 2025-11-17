@@ -1,0 +1,124 @@
+.basic-layout {
+  &_menu {
+    padding: 40px 0;
+    height: 100%;
+    position: relative;
+    &_sub_title {
+      padding-left: 20px;
+    }
+    &_row {
+      // margin-top: 10px;
+      padding: 13px 20px;
+      border-radius: 8px;
+      height: 44px;
+      color: var(--color-text-white);
+      cursor: pointer;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &--active {
+        background: var(--color-bg-accent-red);
+      }
+
+      &:hover:not(&--active) {
+        background: var(--color-bg-accent-black);
+      }
+    }
+    &_sub_row {
+      padding: 13px 0 13px 13px;
+      margin-left: 20px;
+    }
+
+    &_icon {
+      font-size: 20px;
+    }
+
+    &_title {
+      margin-left: 14px;
+      font-size: 14px;
+      font-weight: var(--font-weight-400);
+      line-height: 20px;
+    }
+    &_expansion {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+    &_expansion_icon {
+      display: inline-block;
+      position: relative;
+      width: 8px;
+      height: 8px;
+      transition: transform 0.3s ease;
+      transform: rotate(90deg);
+    
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 1px;
+        background-color: #fff;
+        transform-origin: left; // This ensures rotation happens from the left end
+      }
+    
+      &:before {
+        top: 0;
+        left: 0;
+        transform-origin: left;
+        transform: rotate(-45deg);
+        transition: all 0.3s ease;
+      }
+      
+      &:after {
+        top: 0;
+        left: 0;
+        transform-origin: left;
+        transform: rotate(45deg);
+        transition: all 0.3s ease;
+      }
+    }
+    &_expansion_icon_collapsed {
+      &:before {
+        left: 8px;
+        transform: rotate(-135deg)
+      }
+      
+      &:after {
+        left: 8px;
+        transform: rotate(135deg)
+      }
+    } 
+    &_expansion_icon_expanded {
+      &:before {
+        left: 5px;
+      }
+      
+      &:after {
+        left: 5px;
+      }
+    }
+    &_has_submenu {
+      overflow: hidden; /* 超出内容隐藏 */
+      transition: max-height 0.3s ease, opacity 0.3s ease; /* 高度和透明度动画 */
+      opacity: 1;
+    }
+    
+    /* 展开状态 */
+    &_has_submenu--expanded {
+      max-height: 500px; /* 设置一个足够大的高度，满足完全展开的内容 */
+      opacity: 1;
+    }
+    
+    /* 折叠状态 */
+    &_has_submenu--collapsed {
+      max-height: 0; /* 高度为 0 实现折叠 */
+      opacity: 0; /* 渐隐效果 */
+      pointer-events: none; /* 禁用交互 */
+    }
+  }
+}

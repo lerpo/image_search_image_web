@@ -1,0 +1,72 @@
+// 重置 浏览器 样式
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  background-color: var(--color-bg-1);
+  font-family: "PingFangSC", "Microsoft Yahei", "微软雅黑", "Arial", "sans-serif";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+li,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+iframe {
+  border: 0;
+}
+
+input::placeholder {
+  font-size: 14px;
+  color: var(--color-text-gray);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+}
+
+// 钉字体(粗)
+@font-face {
+  font-family: 'DIN-Medium';
+  src: url('https://assets.ezrpro.com/font/kos/DIN-Medium.otf') format('opentype')
+}
+
+// 钉字体
+@font-face {
+  font-family: 'DIN';
+  src: url('https://assets.ezrpro.com/font/kos/DIN.otf') format('opentype')
+}
+
+// 滚动
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 4px;
+  background-clip: padding-box;
+  background-color: var(--color-scrollbar-black);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}

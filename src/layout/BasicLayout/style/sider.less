@@ -1,0 +1,69 @@
+.basic-layout {
+  &_sider {
+    padding: 10px;
+    width: 240px;
+    background: var(--color-bg-blue-black);
+    transition: width 0.1s ease-in-out;
+
+    &--collapse {
+      width: 80px;
+    }
+  }
+
+  &_header {
+    margin-top: 20px;
+
+    &_collapse {
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--color-text-white);
+    }
+
+    &_logo {
+      margin-left: 26px;
+      cursor: pointer;
+
+      &--collapse {
+        margin-top: 20px;
+        font-size: 30px;
+        color: var(--color-text-white);
+        cursor: pointer;
+      }
+    }
+
+    &_avatar {
+      margin-top: 40px;
+      user-select: none;
+      padding: 0 20px;
+
+      &_img {
+        object-fit: contain;
+      }
+
+      &_text {
+        margin-left: 14px;
+        font-size: 16px;
+        color: var(--color-text-white);
+      }
+    }
+    &_avatar--collapse {
+      padding: 0;
+      justify-content: center;
+    }
+  }
+
+  &_footer {
+    &_logout {
+      border-radius: 10px;
+      width: 100%;
+      
+      color: var(--color-text-white);
+      line-height: 44px;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        background: var(--color-bg-accent-black);
+      }
+    }
+  }
+}
