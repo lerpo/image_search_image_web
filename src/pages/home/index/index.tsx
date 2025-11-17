@@ -66,6 +66,13 @@ const AiChatPage = () => {
   const [loadingMap, setLoadingMap] = useState<Record<string, boolean>>({});
   const [responses, setResponses] = useState<Record<string, any>>({});
   const [searchResults, setSearchResults] = useState<SearchResultItem[]>([]);
+  const [previewMap, setPreviewMap] = useState<
+    Record<UploadFormKey, string | undefined>
+  >({
+    add: undefined,
+    update: undefined,
+    search: undefined,
+  });
 
   const [createForm] = Form.useForm();
   const [loadForm] = Form.useForm();
@@ -113,6 +120,7 @@ const AiChatPage = () => {
       try {
         const base64 = await fileToBase64(file);
         uploadForms[formKey]?.setFieldsValue({ image: base64 });
+        setPreviewMap((prev) => ({ ...prev, [formKey]: base64 }));
         message.success("图片已转换为 base64");
       } catch (error) {
         message.error("图片转换失败，请重试");
@@ -377,6 +385,15 @@ const AiChatPage = () => {
                             点击或拖拽图片到这里（自动转为 base64）
                           </p>
                         </Dragger>
+                        {previewMap.add && (
+                          <div className="upload-preview">
+                            <img
+                              src={previewMap.add}
+                              alt="已选择图片预览"
+                              className="upload-preview-image"
+                            />
+                          </div>
+                        )}
                       </Form.Item>
                       <Form.Item label="图片 base64" name="image">
                         <Input.TextArea
@@ -446,6 +463,15 @@ const AiChatPage = () => {
                             点击或拖拽图片到这里（自动转为 base64）
                           </p>
                         </Dragger>
+                        {previewMap.update && (
+                          <div className="upload-preview">
+                            <img
+                              src={previewMap.update}
+                              alt="已选择图片预览"
+                              className="upload-preview-image"
+                            />
+                          </div>
+                        )}
                       </Form.Item>
                       <Form.Item label="图片 base64" name="image">
                         <Input.TextArea rows={3} />
@@ -570,6 +596,15 @@ const AiChatPage = () => {
                             上传或拖拽图片（转换为查询用 base64）
                           </p>
                         </Dragger>
+                        {previewMap.search && (
+                          <div className="upload-preview">
+                            <img
+                              src={previewMap.search}
+                              alt="已选择图片预览"
+                              className="upload-preview-image"
+                            />
+                          </div>
+                        )}
                       </Form.Item>
                       <Form.Item label="图片 base64" name="image">
                         <Input.TextArea rows={3} />
